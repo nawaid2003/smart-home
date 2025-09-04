@@ -26,7 +26,114 @@ Welcome to the Smart Home Application! This is a React-based web app that simula
 ## 🚀 Installation
 
 1. **Clone the repository**
-   ```bash
+   
    git clone https://github.com/your-username/smart-home-app.git
    cd smart-home-app
-   ```
+
+
+2. **Install dependencies**
+
+   npm install
+  
+
+3. **Set environment variables**
+
+   - Create a .env file in the project root.
+   - Add your [WeatherAPI](https://www.weatherapi.com/) key:
+
+     VITE_WEATHER_API_KEY=your_api_key_here
+
+
+4. **Run the app**
+
+   npm run dev
+
+   Then open http://localhost:5173.
+
+---
+
+## 🖥️ Usage
+
+- **Browse Rooms** → Scroll horizontally and click a room to view its devices.
+- **Toggle Devices** → Click a device to open its control card. Use the toggle button to turn it On/Off.
+- **Weather Info** → See live weather in Bangalore. Switch units between Celsius and Fahrenheit.
+- **Energy Dashboard** → Track energy usage based on currently active devices.
+
+---
+
+## 📊 Data Structure
+
+Rooms and devices are defined in mock data (initialRooms) and stored in context.
+
+### Room object
+
+- name – Room name
+- devices – Array of devices
+- icon – Icon name (from react-icons/md)
+- bgImage – Background image URL
+- activeCount – Number of active devices
+
+### Device object
+
+- id – Unique number
+- name – Device name
+- icon – Icon name (e.g. "MdLightbulb")
+- isOn – Boolean state
+- type – "light" | "lamp" | "tv" | "fan" | "ac" | "oven" | "fridge"
+- value – Current slider value (brightness, temp, etc.)
+
+📌 Example:
+
+{
+  "id": 1,
+  "name": "Smart Light",
+  "icon": "MdLightbulb",
+  "isOn": true,
+  "type": "light",
+  "value": 70
+}
+
+
+---
+
+## 🛠️ Tech Stack
+
+- **React** – UI library
+- **Vite** – Fast dev server
+- **Tailwind CSS** – Styling
+- **Framer Motion** – Animations
+- **Axios** – Weather API requests
+- **React Icons** – Device/room icons
+
+---
+
+## 📂 Project Structure
+
+smart-home-app/
+├── src/
+│   ├── App.jsx
+│   ├── context/
+│   │   └── SmartHomeContext.jsx
+│   ├── components/
+│   │   ├── Dashboard.jsx
+│   │   ├── RoomsList.jsx
+│   │   ├── DevicesGrid.jsx
+│   ├── index.css
+│   └── main.jsx
+├── .env
+├── package.json
+├── tailwind.config.js
+└── README.md
+
+
+---
+
+## 🤝 Contributing
+
+1. Fork the repo
+2. Create a branch: git checkout -b feature/my-feature
+3. Commit: git commit -m "Added my feature"
+4. Push: git push origin feature/my-feature
+5. Open a PR
+
+---
