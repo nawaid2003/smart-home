@@ -2,15 +2,13 @@
 
 Welcome to the **Smart Home Application**! A modern, React-based web app that simulates a comprehensive smart home environment with beautiful UI and interactive controls. Manage rooms, control devices with precision, and monitor your home's energy consumption—all with real-time weather integration.
 
----
-
 ## ✨ Features
 
 ### 🌡️ **Live Weather Integration**
 
-- Real-time weather data for your location.
-- Temperature display with Celsius/Fahrenheit toggle.
-- Current weather conditions with intuitive icons.
+- Real-time weather data for your location
+- Temperature display with Celsius/Fahrenheit toggle
+- Current weather conditions with intuitive icons
 
 ### 🏠 **Advanced Room Management**
 
@@ -208,7 +206,9 @@ smart-home-app/
 
 ## 🎨 Key Components
 
-### **DevicesGrid.jsx**
+### **DevicesGrid.jsx** ⭐ **Star Feature**
+
+The crown jewel of our application featuring:
 
 - **Interactive modal controls** with device-specific interfaces
 - **Smooth animations** and responsive design
@@ -218,12 +218,16 @@ smart-home-app/
 
 ### **SmartHomeContext.jsx**
 
+Centralized state management providing:
+
 - **Device state persistence** with localStorage
 - **Real-time updates** across all components
 - **Energy calculation** and room statistics
 - **Weather data integration**
 
 ### **Dashboard.jsx**
+
+Information hub featuring:
 
 - **Live weather display** with unit conversion
 - **Energy consumption tracking**
