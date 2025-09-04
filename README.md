@@ -8,9 +8,9 @@ Welcome to the **Smart Home Application**! A modern, React-based web app that si
 
 ### 🌡️ **Live Weather Integration**
 
-- Real-time weather data for your location
-- Temperature display with Celsius/Fahrenheit toggle
-- Current weather conditions with intuitive icons
+- Real-time weather data for your location.
+- Temperature display with Celsius/Fahrenheit toggle.
+- Current weather conditions with intuitive icons.
 
 ### 🏠 **Advanced Room Management**
 
