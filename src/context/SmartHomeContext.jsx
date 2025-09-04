@@ -12,6 +12,11 @@ export function SmartHomeProvider({ children, initialRooms }) {
       : initialRooms.map((room) => ({
           ...room,
           activeCount: room.devices.filter((d) => d.isOn).length,
+          devices: room.devices.map((device) => ({
+            ...device,
+            // Add default values for devices if they don't exist
+            value: device.value || getDefaultValueForDevice(device),
+          })),
         }));
   });
   const [weather, setWeather] = useState(null);
@@ -82,6 +87,27 @@ export function SmartHomeProvider({ children, initialRooms }) {
     );
   };
 
+  // New function to update device values
+  const updateDeviceValue = (roomName, deviceId, value) => {
+    setRooms((prevRooms) =>
+      prevRooms.map((room) => {
+        if (room.name === roomName) {
+          const newDevices = room.devices.map((device) => {
+            if (device.id === deviceId) {
+              return { ...device, value: value };
+            }
+            return device;
+          });
+          return {
+            ...room,
+            devices: newDevices,
+          };
+        }
+        return room;
+      })
+    );
+  };
+
   const toggleUnit = () => setUnit((prev) => (prev === "C" ? "F" : "C"));
 
   return (
@@ -92,6 +118,7 @@ export function SmartHomeProvider({ children, initialRooms }) {
         unit,
         toggleUnit,
         toggleDevice,
+        updateDeviceValue, // Add this new function
         loading,
         error,
         isDarkMode,
@@ -100,6 +127,41 @@ export function SmartHomeProvider({ children, initialRooms }) {
       {children}
     </SmartHomeContext.Provider>
   );
+}
+
+// Helper function to get default values based on device type/name
+function getDefaultValueForDevice(device) {
+  const deviceType = device.type?.toLowerCase() || device.name.toLowerCase();
+
+  if (deviceType.includes("light") || deviceType.includes("lamp")) {
+    return 75; // 75% brightness
+  }
+  if (deviceType.includes("tv") || deviceType.includes("television")) {
+    return 45; // 45% volume
+  }
+  if (deviceType.includes("fan")) {
+    return 3; // Speed level 3
+  }
+  if (deviceType.includes("ac") || deviceType.includes("air")) {
+    return 22; // 22°C
+  }
+  if (deviceType.includes("oven")) {
+    return 180; // 180°C
+  }
+  if (deviceType.includes("fridge") || deviceType.includes("refrigerator")) {
+    return 4; // 4°C
+  }
+  if (deviceType.includes("monitor") || deviceType.includes("screen")) {
+    return 80; // 80% brightness
+  }
+  if (deviceType.includes("coffee")) {
+    return 85; // 85°C
+  }
+  if (deviceType.includes("blind")) {
+    return 50; // 50% open
+  }
+
+  return 50; // Default fallback
 }
 
 SmartHomeProvider.propTypes = {
